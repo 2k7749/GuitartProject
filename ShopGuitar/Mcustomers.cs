@@ -20,6 +20,7 @@ namespace ShopGuitar
 
         private void Mcustomers_Load(object sender, EventArgs e)
         {
+            resultstaffid.Visible = false;
             GridFill("");
             boxSex.SelectedIndex = 0;
         }

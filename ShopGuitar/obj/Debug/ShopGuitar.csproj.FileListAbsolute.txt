@@ -29,5 +29,10 @@ E:\ProjectLocalSave\ShopGuitar\ShopGuitar\bin\Debug\Guna.UI.dll
 E:\ProjectLocalSave\ShopGuitar\ShopGuitar\obj\Debug\ShopGuitar.Mproducts.resources
 E:\ProjectLocalSave\ShopGuitar\ShopGuitar\obj\Debug\ShopGuitar.Buyproducts.resources
 E:\ProjectLocalSave\ShopGuitar\ShopGuitar\obj\Debug\ShopGuitar.Changepwdtab.resources
-E:\ProjectLocalSave\ShopGuitar\ShopGuitar\obj\Debug\ShopGuitar.csprojAssemblyReference.cache
 E:\ProjectLocalSave\ShopGuitar\ShopGuitar\obj\Debug\ShopGuitar.ConfirmOrder.resources
+E:\ProjectLocalSave\ShopGuitar\ShopGuitar\obj\Debug\ShopGuitar.Historybuytab.resources
+E:\ProjectLocalSave\ShopGuitar\ShopGuitar\obj\Debug\ShopGuitar.Collabrequesttab.resources
+E:\ProjectLocalSave\ShopGuitar\ShopGuitar\obj\Debug\ShopGuitar.SendMail.resources
+E:\ProjectLocalSave\ShopGuitar\ShopGuitar\obj\Debug\ShopGuitar.Analyticstab.resources
+E:\ProjectLocalSave\ShopGuitar\ShopGuitar\obj\Debug\ShopGuitar.POS.resources
+E:\ProjectLocalSave\ShopGuitar\ShopGuitar\obj\Debug\ShopGuitar.csprojAssemblyReference.cache

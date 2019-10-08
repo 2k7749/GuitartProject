@@ -102,5 +102,14 @@ namespace ShopGuitar
                 form.ChangePwdfunction();
             }
         }
+
+        private void BunifuFlatButton4_Click(object sender, EventArgs e)
+        {
+            DashBoard form = Application.OpenForms.OfType<DashBoard>().FirstOrDefault();
+            if (form != null)
+            {
+                form.GoToStore();
+            }
+        }
     }
 }

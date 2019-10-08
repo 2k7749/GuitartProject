@@ -30,18 +30,22 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ConfirmOrder));
             this.buyorderlist = new System.Windows.Forms.DataGridView();
-            this.label1 = new System.Windows.Forms.Label();
             this.id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.pname = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Qty = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Price = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Total = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Pid = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.bunifuMetroTextbox1 = new Bunifu.Framework.UI.BunifuMetroTextbox();
-            this.bunifuFlatButton1 = new Bunifu.Framework.UI.BunifuFlatButton();
-            this.txtIntomoney = new WindowsFormsControlLibrary1.BunifuCustomTextbox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.txtadressship = new Bunifu.Framework.UI.BunifuMetroTextbox();
             this.label2 = new System.Windows.Forms.Label();
+            this.txtIntomoney = new Bunifu.Framework.UI.BunifuMetroTextbox();
+            this.Paynow = new Bunifu.Framework.UI.BunifuImageButton();
+            this.Cancel = new Bunifu.Framework.UI.BunifuImageButton();
+            this.getUserSeed = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.buyorderlist)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Paynow)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Cancel)).BeginInit();
             this.SuspendLayout();
             // 
             // buyorderlist
@@ -61,17 +65,6 @@
             this.buyorderlist.RowTemplate.Height = 24;
             this.buyorderlist.Size = new System.Drawing.Size(528, 422);
             this.buyorderlist.TabIndex = 3;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Segoe Print", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.Crimson;
-            this.label1.Location = new System.Drawing.Point(134, 9);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(289, 35);
-            this.label1.TabIndex = 4;
-            this.label1.Text = "- Payment Confirmation -";
             // 
             // id
             // 
@@ -116,89 +109,112 @@
             this.Pid.Visible = false;
             this.Pid.Width = 125;
             // 
-            // bunifuMetroTextbox1
+            // label1
             // 
-            this.bunifuMetroTextbox1.BorderColorFocused = System.Drawing.Color.Blue;
-            this.bunifuMetroTextbox1.BorderColorIdle = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.bunifuMetroTextbox1.BorderColorMouseHover = System.Drawing.Color.Blue;
-            this.bunifuMetroTextbox1.BorderThickness = 3;
-            this.bunifuMetroTextbox1.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.bunifuMetroTextbox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
-            this.bunifuMetroTextbox1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.bunifuMetroTextbox1.isPassword = false;
-            this.bunifuMetroTextbox1.Location = new System.Drawing.Point(12, 531);
-            this.bunifuMetroTextbox1.Margin = new System.Windows.Forms.Padding(4);
-            this.bunifuMetroTextbox1.Name = "bunifuMetroTextbox1";
-            this.bunifuMetroTextbox1.Size = new System.Drawing.Size(370, 44);
-            this.bunifuMetroTextbox1.TabIndex = 5;
-            this.bunifuMetroTextbox1.Text = "Press your Address";
-            this.bunifuMetroTextbox1.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Segoe Print", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.Crimson;
+            this.label1.Location = new System.Drawing.Point(134, 9);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(289, 35);
+            this.label1.TabIndex = 4;
+            this.label1.Text = "- Payment Confirmation -";
             // 
-            // bunifuFlatButton1
+            // txtadressship
             // 
-            this.bunifuFlatButton1.Activecolor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(139)))), ((int)(((byte)(87)))));
-            this.bunifuFlatButton1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(139)))), ((int)(((byte)(87)))));
-            this.bunifuFlatButton1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.bunifuFlatButton1.BorderRadius = 0;
-            this.bunifuFlatButton1.ButtonText = "Pay Now";
-            this.bunifuFlatButton1.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.bunifuFlatButton1.DisabledColor = System.Drawing.Color.Gray;
-            this.bunifuFlatButton1.Iconcolor = System.Drawing.Color.Transparent;
-            this.bunifuFlatButton1.Iconimage = ((System.Drawing.Image)(resources.GetObject("bunifuFlatButton1.Iconimage")));
-            this.bunifuFlatButton1.Iconimage_right = null;
-            this.bunifuFlatButton1.Iconimage_right_Selected = null;
-            this.bunifuFlatButton1.Iconimage_Selected = null;
-            this.bunifuFlatButton1.IconMarginLeft = 0;
-            this.bunifuFlatButton1.IconMarginRight = 0;
-            this.bunifuFlatButton1.IconRightVisible = true;
-            this.bunifuFlatButton1.IconRightZoom = 0D;
-            this.bunifuFlatButton1.IconVisible = true;
-            this.bunifuFlatButton1.IconZoom = 90D;
-            this.bunifuFlatButton1.IsTab = false;
-            this.bunifuFlatButton1.Location = new System.Drawing.Point(390, 531);
-            this.bunifuFlatButton1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.bunifuFlatButton1.Name = "bunifuFlatButton1";
-            this.bunifuFlatButton1.Normalcolor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(139)))), ((int)(((byte)(87)))));
-            this.bunifuFlatButton1.OnHovercolor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(129)))), ((int)(((byte)(77)))));
-            this.bunifuFlatButton1.OnHoverTextColor = System.Drawing.Color.White;
-            this.bunifuFlatButton1.selected = false;
-            this.bunifuFlatButton1.Size = new System.Drawing.Size(149, 68);
-            this.bunifuFlatButton1.TabIndex = 6;
-            this.bunifuFlatButton1.Text = "Pay Now";
-            this.bunifuFlatButton1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.bunifuFlatButton1.Textcolor = System.Drawing.Color.White;
-            this.bunifuFlatButton1.TextFont = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            // 
-            // txtIntomoney
-            // 
-            this.txtIntomoney.BackColor = System.Drawing.SystemColors.Control;
-            this.txtIntomoney.BorderColor = System.Drawing.Color.SeaGreen;
-            this.txtIntomoney.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txtIntomoney.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtIntomoney.Location = new System.Drawing.Point(420, 482);
-            this.txtIntomoney.Name = "txtIntomoney";
-            this.txtIntomoney.Size = new System.Drawing.Size(119, 23);
-            this.txtIntomoney.TabIndex = 7;
+            this.txtadressship.BorderColorFocused = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
+            this.txtadressship.BorderColorIdle = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.txtadressship.BorderColorMouseHover = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
+            this.txtadressship.BorderThickness = 3;
+            this.txtadressship.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.txtadressship.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
+            this.txtadressship.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.txtadressship.isPassword = false;
+            this.txtadressship.Location = new System.Drawing.Point(12, 542);
+            this.txtadressship.Margin = new System.Windows.Forms.Padding(4);
+            this.txtadressship.Name = "txtadressship";
+            this.txtadressship.Size = new System.Drawing.Size(329, 46);
+            this.txtadressship.TabIndex = 5;
+            this.txtadressship.Text = "Press your Address";
+            this.txtadressship.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.txtadressship.Enter += new System.EventHandler(this.Txtadressship_Enter);
+            this.txtadressship.Leave += new System.EventHandler(this.Txtadressship_Leave);
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(301, 482);
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(282, 486);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(113, 24);
+            this.label2.Size = new System.Drawing.Size(132, 25);
             this.label2.TabIndex = 8;
             this.label2.Text = "Into Money: ";
+            // 
+            // txtIntomoney
+            // 
+            this.txtIntomoney.BorderColorFocused = System.Drawing.Color.Red;
+            this.txtIntomoney.BorderColorIdle = System.Drawing.Color.Gray;
+            this.txtIntomoney.BorderColorMouseHover = System.Drawing.Color.Red;
+            this.txtIntomoney.BorderThickness = 3;
+            this.txtIntomoney.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.txtIntomoney.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
+            this.txtIntomoney.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.txtIntomoney.isPassword = false;
+            this.txtIntomoney.Location = new System.Drawing.Point(416, 480);
+            this.txtIntomoney.Margin = new System.Windows.Forms.Padding(4);
+            this.txtIntomoney.Name = "txtIntomoney";
+            this.txtIntomoney.Size = new System.Drawing.Size(123, 36);
+            this.txtIntomoney.TabIndex = 12;
+            this.txtIntomoney.Text = "Totals";
+            this.txtIntomoney.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.txtIntomoney.OnValueChanged += new System.EventHandler(this.TxtIntomoney_OnValueChanged);
+            // 
+            // Paynow
+            // 
+            this.Paynow.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.Paynow.Image = ((System.Drawing.Image)(resources.GetObject("Paynow.Image")));
+            this.Paynow.ImageActive = null;
+            this.Paynow.Location = new System.Drawing.Point(357, 533);
+            this.Paynow.Name = "Paynow";
+            this.Paynow.Size = new System.Drawing.Size(88, 63);
+            this.Paynow.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.Paynow.TabIndex = 13;
+            this.Paynow.TabStop = false;
+            this.Paynow.Zoom = 10;
+            this.Paynow.Click += new System.EventHandler(this.Paynow_Click);
+            // 
+            // Cancel
+            // 
+            this.Cancel.BackColor = System.Drawing.Color.Gray;
+            this.Cancel.Image = ((System.Drawing.Image)(resources.GetObject("Cancel.Image")));
+            this.Cancel.ImageActive = null;
+            this.Cancel.Location = new System.Drawing.Point(451, 533);
+            this.Cancel.Name = "Cancel";
+            this.Cancel.Size = new System.Drawing.Size(88, 63);
+            this.Cancel.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.Cancel.TabIndex = 14;
+            this.Cancel.TabStop = false;
+            this.Cancel.Zoom = 10;
+            this.Cancel.Click += new System.EventHandler(this.Cancel_Click);
+            // 
+            // getUserSeed
+            // 
+            this.getUserSeed.Location = new System.Drawing.Point(13, 9);
+            this.getUserSeed.Name = "getUserSeed";
+            this.getUserSeed.Size = new System.Drawing.Size(13, 22);
+            this.getUserSeed.TabIndex = 15;
             // 
             // ConfirmOrder
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(552, 601);
-            this.Controls.Add(this.label2);
+            this.Controls.Add(this.getUserSeed);
+            this.Controls.Add(this.Cancel);
+            this.Controls.Add(this.Paynow);
             this.Controls.Add(this.txtIntomoney);
-            this.Controls.Add(this.bunifuFlatButton1);
-            this.Controls.Add(this.bunifuMetroTextbox1);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.txtadressship);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.buyorderlist);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
@@ -207,6 +223,8 @@
             this.Text = "ConfirmOrder";
             this.Load += new System.EventHandler(this.ConfirmOrder_Load);
             ((System.ComponentModel.ISupportInitialize)(this.buyorderlist)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Paynow)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Cancel)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -221,9 +239,11 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Price;
         private System.Windows.Forms.DataGridViewTextBoxColumn Total;
         private System.Windows.Forms.DataGridViewTextBoxColumn Pid;
-        private Bunifu.Framework.UI.BunifuMetroTextbox bunifuMetroTextbox1;
-        private Bunifu.Framework.UI.BunifuFlatButton bunifuFlatButton1;
-        private WindowsFormsControlLibrary1.BunifuCustomTextbox txtIntomoney;
+        private Bunifu.Framework.UI.BunifuMetroTextbox txtadressship;
         private System.Windows.Forms.Label label2;
+        private Bunifu.Framework.UI.BunifuMetroTextbox txtIntomoney;
+        private Bunifu.Framework.UI.BunifuImageButton Paynow;
+        private Bunifu.Framework.UI.BunifuImageButton Cancel;
+        private System.Windows.Forms.TextBox getUserSeed;
     }
 }

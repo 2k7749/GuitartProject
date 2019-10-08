@@ -108,12 +108,14 @@ namespace ShopGuitar
         {
             MySqlConnection conn = DBUtils.GetDBConnection();
             conn.Open();
-            MySqlCommand command = new MySqlCommand("INSERT INTO Collaborator (collabname, collabphone, collabaddress, intro) VALUES (@Collabname,@Collabphone,@Collabaddress,@Intro)", conn);
+            MySqlCommand command = new MySqlCommand("INSERT INTO Collaborator (collabname, collabphone, collabaddress, intro,gmail) VALUES (@Collabname,@Collabphone,@Collabaddress,@Intro,@gmail)", conn);
             command.Parameters.Add("@Collabname", MySqlDbType.VarChar).Value = collabName.Text;
             command.Parameters.Add("@Collabphone", MySqlDbType.VarChar).Value = collabPhone.Text;
             command.Parameters.Add("@Collabaddress", MySqlDbType.VarChar).Value = collabAddress.Text;
+            command.Parameters.Add("@Gmail", MySqlDbType.VarChar).Value = txtMail.Text;
             command.Parameters.Add("@Intro", MySqlDbType.VarChar).Value = txtIntro.Text;
-            if(string.IsNullOrEmpty(collabName.Text) || collabName.Text == "Your Name")
+            string email = txtMail.Text;
+            if (string.IsNullOrEmpty(collabName.Text) || collabName.Text == "Your Name")
             {
                 Alert.ThatShow("Please enter Name to continue", Alert.AlertType.warning);
             }
@@ -124,6 +126,14 @@ namespace ShopGuitar
             else if (string.IsNullOrEmpty(collabAddress.Text) || collabAddress.Text == "Your Address")
             {
                 Alert.ThatShow("Please enter Address to continue", Alert.AlertType.warning);
+            }
+            else if (string.IsNullOrEmpty(txtMail.Text) || txtMail.Text == "Your G-Mail")
+            {
+                Alert.ThatShow("Please enter GMAIL to continue", Alert.AlertType.warning);
+            }
+            else if(email.LastIndexOf("@") < 1)
+            {
+                Alert.ThatShow("Wrong email format, Check back ", Alert.AlertType.warning);
             }
             else if (string.IsNullOrEmpty(txtIntro.Text) || txtIntro.Text == "Introduce Yourself")
             {
@@ -164,6 +174,24 @@ namespace ShopGuitar
                 {
                     e.Handled = true;
                 }
+            }
+        }
+
+        private void TxtMail_Enter(object sender, EventArgs e)
+        {
+            if (txtMail.Text == "Your G-Mail")
+            {
+                txtMail.Text = "";
+                txtIntro.ForeColor = Color.Crimson;
+            }
+        }
+
+        private void TxtMail_Leave(object sender, EventArgs e)
+        {
+            if (txtMail.Text == "")
+            {
+                txtMail.Text = "Your G-Mail";
+                txtMail.ForeColor = Color.Crimson;
             }
         }
     }

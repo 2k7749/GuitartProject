@@ -44,6 +44,7 @@
             this.txtRetail = new System.Windows.Forms.TextBox();
             this.txtQty = new System.Windows.Forms.TextBox();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.txtLeftqty = new Bunifu.Framework.UI.BunifuMetroTextbox();
             this.bunifuImageButton2 = new Bunifu.Framework.UI.BunifuImageButton();
             this.bunifuImageButton1 = new Bunifu.Framework.UI.BunifuImageButton();
             this.addTocart = new Bunifu.Framework.UI.BunifuFlatButton();
@@ -67,7 +68,9 @@
             this.bunifuImageButton3 = new Bunifu.Framework.UI.BunifuImageButton();
             this.label4 = new System.Windows.Forms.Label();
             this.txtIntomoney = new WindowsFormsControlLibrary1.BunifuCustomTextbox();
-            this.txtLeftqty = new Bunifu.Framework.UI.BunifuMetroTextbox();
+            this.sumqty = new System.Windows.Forms.TextBox();
+            this.preNameP = new System.Windows.Forms.TextBox();
+            this.userSeed = new System.Windows.Forms.TextBox();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.panel2.SuspendLayout();
@@ -220,6 +223,24 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(402, 192);
             this.panel2.TabIndex = 6;
+            // 
+            // txtLeftqty
+            // 
+            this.txtLeftqty.BorderColorFocused = System.Drawing.Color.Red;
+            this.txtLeftqty.BorderColorIdle = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.txtLeftqty.BorderColorMouseHover = System.Drawing.Color.Red;
+            this.txtLeftqty.BorderThickness = 3;
+            this.txtLeftqty.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.txtLeftqty.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
+            this.txtLeftqty.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.txtLeftqty.isPassword = false;
+            this.txtLeftqty.Location = new System.Drawing.Point(343, 47);
+            this.txtLeftqty.Margin = new System.Windows.Forms.Padding(4);
+            this.txtLeftqty.Name = "txtLeftqty";
+            this.txtLeftqty.Size = new System.Drawing.Size(55, 44);
+            this.txtLeftqty.TabIndex = 13;
+            this.txtLeftqty.Text = "Left";
+            this.txtLeftqty.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             // 
             // bunifuImageButton2
             // 
@@ -518,7 +539,7 @@
             // payNow
             // 
             this.payNow.Activecolor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(139)))), ((int)(((byte)(87)))));
-            this.payNow.BackColor = System.Drawing.Color.Crimson;
+            this.payNow.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.payNow.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.payNow.BorderRadius = 0;
             this.payNow.ButtonText = "Pay Now";
@@ -539,8 +560,8 @@
             this.payNow.Location = new System.Drawing.Point(1088, 362);
             this.payNow.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.payNow.Name = "payNow";
-            this.payNow.Normalcolor = System.Drawing.Color.Crimson;
-            this.payNow.OnHovercolor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(129)))), ((int)(((byte)(77)))));
+            this.payNow.Normalcolor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.payNow.OnHovercolor = System.Drawing.Color.Red;
             this.payNow.OnHoverTextColor = System.Drawing.Color.White;
             this.payNow.selected = false;
             this.payNow.Size = new System.Drawing.Size(152, 59);
@@ -700,29 +721,36 @@
             this.txtIntomoney.Size = new System.Drawing.Size(119, 23);
             this.txtIntomoney.TabIndex = 14;
             // 
-            // txtLeftqty
+            // sumqty
             // 
-            this.txtLeftqty.BorderColorFocused = System.Drawing.Color.Red;
-            this.txtLeftqty.BorderColorIdle = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.txtLeftqty.BorderColorMouseHover = System.Drawing.Color.Red;
-            this.txtLeftqty.BorderThickness = 3;
-            this.txtLeftqty.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.txtLeftqty.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
-            this.txtLeftqty.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.txtLeftqty.isPassword = false;
-            this.txtLeftqty.Location = new System.Drawing.Point(343, 47);
-            this.txtLeftqty.Margin = new System.Windows.Forms.Padding(4);
-            this.txtLeftqty.Name = "txtLeftqty";
-            this.txtLeftqty.Size = new System.Drawing.Size(55, 44);
-            this.txtLeftqty.TabIndex = 13;
-            this.txtLeftqty.Text = "Left";
-            this.txtLeftqty.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.sumqty.Location = new System.Drawing.Point(683, 334);
+            this.sumqty.Name = "sumqty";
+            this.sumqty.Size = new System.Drawing.Size(100, 22);
+            this.sumqty.TabIndex = 16;
+            // 
+            // preNameP
+            // 
+            this.preNameP.Location = new System.Drawing.Point(789, 334);
+            this.preNameP.Name = "preNameP";
+            this.preNameP.Size = new System.Drawing.Size(100, 22);
+            this.preNameP.TabIndex = 17;
+            this.preNameP.TextChanged += new System.EventHandler(this.PreNameP_TextChanged);
+            // 
+            // userSeed
+            // 
+            this.userSeed.Location = new System.Drawing.Point(1246, 89);
+            this.userSeed.Name = "userSeed";
+            this.userSeed.Size = new System.Drawing.Size(34, 22);
+            this.userSeed.TabIndex = 18;
             // 
             // Buyproducts
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
+            this.Controls.Add(this.userSeed);
+            this.Controls.Add(this.preNameP);
+            this.Controls.Add(this.sumqty);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.txtIntomoney);
             this.Controls.Add(this.bunifuImageButton3);
@@ -795,5 +823,8 @@
         private System.Windows.Forms.Label label4;
         private WindowsFormsControlLibrary1.BunifuCustomTextbox txtIntomoney;
         private Bunifu.Framework.UI.BunifuMetroTextbox txtLeftqty;
+        private System.Windows.Forms.TextBox sumqty;
+        private System.Windows.Forms.TextBox preNameP;
+        private System.Windows.Forms.TextBox userSeed;
     }
 }

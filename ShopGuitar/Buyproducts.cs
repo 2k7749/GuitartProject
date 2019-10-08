@@ -4,10 +4,12 @@ using System.ComponentModel;
 using System.Drawing;
 using System.Data;
 using System.Linq;
+using System.IO;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using MySql.Data.MySqlClient;
+using System.Drawing.Imaging;
 
 namespace ShopGuitar
 {
@@ -19,6 +21,7 @@ namespace ShopGuitar
         }
         private void Buyproducts_Load(object sender, EventArgs e)
         {
+            Showitems("");
             QueryTypeandBran();
             flowLayoutPanel1.Controls.Clear();
             comboType.SelectedIndex = 0;
@@ -30,7 +33,9 @@ namespace ShopGuitar
             txtpid.Visible = false;
             txtQty.Visible = false;
             txtRetail.Visible = false;
-
+            sumqty.Visible = false;
+            preNameP.Visible = false;
+            userSeed.Visible = false;
         }
         public void QueryTypeandBran()
         {
@@ -70,7 +75,8 @@ namespace ShopGuitar
             Button[] btn_item = new Button[numRows];
             foreach(DataRow row in dt.Rows)
             {
-               
+                Byte[] img = (Byte[])row[8];
+                MemoryStream ms = new MemoryStream(img);
                 btn_item[i] = new Button();
                 btn_item[i].BackColor = System.Drawing.Color.Crimson;
                 btn_item[i].FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -82,6 +88,9 @@ namespace ShopGuitar
                 btn_item[i].Cursor = System.Windows.Forms.Cursors.Hand;
                 btn_item[i].Location = new Point(horizotal, verical);
                 btn_item[i].Text = row[2].ToString();
+                btn_item[i].BackgroundImage = Image.FromStream(ms);
+                btn_item[i].BackgroundImageLayout = ImageLayout.Stretch;
+                btn_item[i].Click += new EventHandler(btn_Click);
                 btn_item[i].Click += new EventHandler(btn_Click);
                 mod = i % 4;
                 if(mod == 0)
@@ -99,8 +108,8 @@ namespace ShopGuitar
         void btn_Click(object sender, EventArgs e)
         {
             Button btn_item = sender as Button;
-            panel2.Visible = true;
             NamedProduct.Text = btn_item.Text.ToString();
+            preNameP.Text = NamedProduct.Text + "xxx";
             using (MySqlConnection conn = DBUtils.GetDBConnection())
             {
                 conn.Open();
@@ -117,9 +126,43 @@ namespace ShopGuitar
                         txtRetail.Text = retailprice.ToString();
                         int qty = (int)Reader["qty"];
                         txtQty.Text = qty.ToString();
+                        txtLeftqty.Text = qty.ToString();
                     }
-                   // int count = Convert.ToInt32(cmd.ExecuteScalar());
-                   // totalusers.Text = count.ToString();
+                    if (sumqty.Text != "")
+                    {
+                        int stock = int.Parse(txtQty.Text) - int.Parse(sumqty.Text);
+                        txtLeftqty.Text = stock.ToString();
+                        if(txtLeftqty.Text == "0")
+                        {
+                            panel2.Visible = false;
+                            Alert.ThatShow("OutStock", Alert.AlertType.warning);
+                        }
+                    }
+                    else if (txtQty.Text == "0")
+                    {
+                        panel2.Visible = false;
+                        Alert.ThatShow("OutStock", Alert.AlertType.warning);
+                    }
+                    else
+                    {
+                        panel2.Visible = true;
+                    }
+                    if (preNameP.Text != btn_item.Text.ToString())
+                    {
+                        sumqty.Text = "";
+                    }
+                    int sum = 0;
+                    for (int j = 0; j < dataGridView1.Rows.Count; j++)
+                    {
+                        if (dataGridView1[1, j].Value.ToString() == btn_item.Text.ToString())
+                        {
+                          sum = sum + Convert.ToInt32(dataGridView1[2, j].Value);
+                            sumqty.Text = sum.ToString(); 
+                        } 
+                    }
+                    
+                    // int count = Convert.ToInt32(cmd.ExecuteScalar());
+                    // totalusers.Text = count.ToString();
                 }
                 conn.Close();
             }
@@ -172,7 +215,6 @@ namespace ShopGuitar
 
         private void BunifuImageButton1_Click(object sender, EventArgs e)
         {
-            NamedProduct.Text = "Name Product";
             selectedQty.Text = "Qty.";
         }
 
@@ -181,6 +223,7 @@ namespace ShopGuitar
             txtpid.Text = "";
             txtQty.Text = "";
             txtRetail.Text = "";
+            sumqty.Text = "";
             NamedProduct.Text = "Name Product";
             selectedQty.Text = "Qty.";
             panel2.Visible = false;
@@ -192,18 +235,17 @@ namespace ShopGuitar
         }
         private void AddTocart_Click(object sender, EventArgs e)
         {
-            
-
             if (string.IsNullOrEmpty(selectedQty.Text) || selectedQty.Text == "Qty.")
                           {
                         
                              Alert.ThatShow("Please fill Qty.", Alert.AlertType.warning);
                          }
-                    else if(int.Parse(txtQty.Text) < int.Parse(txtLeftqty.Text))
-                         {
-                              Alert.ThatShow("Not enough product Qty. instock", Alert.AlertType.warning);
-                          }
-                    else
+            else if (int.Parse(txtLeftqty.Text) < int.Parse(selectedQty.Text))
+            {
+                Alert.ThatShow("Not enough product Qty. instock", Alert.AlertType.warning);
+
+            }
+            else
                     {
                         int rowId = dataGridView1.Rows.Add();
                         DataGridViewRow row = dataGridView1.Rows[rowId];
@@ -214,8 +256,9 @@ namespace ShopGuitar
                         int totals = int.Parse(selectedQty.Text) * int.Parse(txtRetail.Text); 
                         row.Cells["Total"].Value = totals;
                         row.Cells["pid"].Value = txtpid.Text;
-                    }
-            panel2.Visible = false;
+                sumqty.Text = "";
+                panel2.Visible = false;
+            }
         }
 
         private void ComboType_TextChanged(object sender, EventArgs e)
@@ -228,14 +271,19 @@ namespace ShopGuitar
         private void BunifuFlatButton1_Click(object sender, EventArgs e)
         {
             dataGridView1.Rows.Clear();
+            sumqty.Text = "";
+            panel2.Visible = false;
         }
 
         private void BtnDel1_Click(object sender, EventArgs e)
         {
             foreach (DataGridViewCell oneCell in dataGridView1.SelectedCells)
             {
-                if (oneCell.Selected)
+                if (oneCell.Selected) { 
                     dataGridView1.Rows.RemoveAt(oneCell.RowIndex);
+                    sumqty.Text = "";
+                    panel2.Visible = false;
+                }
             }
         }
 
@@ -305,7 +353,7 @@ namespace ShopGuitar
 
         private void PayNow_Click(object sender, EventArgs e)
         {
-            ConfirmOrder confirms = new ConfirmOrder();
+            ConfirmOrder confirms = new ConfirmOrder(userSeed.Text);
             confirms.buyorderlist.Rows.Clear();
             if (dataGridView1.Rows.Count > 0)
             {
@@ -322,8 +370,13 @@ namespace ShopGuitar
                         confirms.buyorderlist.Rows[i].Cells[5].Value = dataGridView1.Rows[i].Cells[5].Value.ToString();
                     }
                 }
+                confirms.ShowDialog();
             }
-            confirms.ShowDialog();
+            else
+            {
+                Alert.ThatShow("There re no Items to Pay", Alert.AlertType.info);
+            }
+            
         }
 
         private void SelectedQty_KeyPress(object sender, KeyPressEventArgs e)
@@ -353,6 +406,15 @@ namespace ShopGuitar
                 sum += Convert.ToInt32(dataGridView1.Rows[i].Cells[4].Value);
             }
             txtIntomoney.Text = sum.ToString();
+
+
+        }
+        public string USeeding
+        {
+            set { userSeed.Text = value; }
+        }
+        private void PreNameP_TextChanged(object sender, EventArgs e)
+        {
         }
     }
 }

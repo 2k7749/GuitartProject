@@ -46,6 +46,7 @@
             this.collabAddress = new Bunifu.Framework.UI.BunifuMetroTextbox();
             this.regCollab = new Bunifu.Framework.UI.BunifuFlatButton();
             this.txtIntro = new WindowsFormsControlLibrary1.BunifuCustomTextbox();
+            this.txtMail = new Bunifu.Framework.UI.BunifuMetroTextbox();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
@@ -209,7 +210,7 @@
             this.collabPhone.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
             this.collabPhone.ForeColor = System.Drawing.Color.Gray;
             this.collabPhone.isPassword = false;
-            this.collabPhone.Location = new System.Drawing.Point(33, 133);
+            this.collabPhone.Location = new System.Drawing.Point(33, 123);
             this.collabPhone.Margin = new System.Windows.Forms.Padding(4);
             this.collabPhone.Name = "collabPhone";
             this.collabPhone.Size = new System.Drawing.Size(313, 44);
@@ -230,7 +231,7 @@
             this.collabAddress.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
             this.collabAddress.ForeColor = System.Drawing.Color.Gray;
             this.collabAddress.isPassword = false;
-            this.collabAddress.Location = new System.Drawing.Point(33, 196);
+            this.collabAddress.Location = new System.Drawing.Point(33, 175);
             this.collabAddress.Margin = new System.Windows.Forms.Padding(4);
             this.collabAddress.Name = "collabAddress";
             this.collabAddress.Size = new System.Drawing.Size(313, 44);
@@ -281,20 +282,41 @@
             this.txtIntro.BorderColor = System.Drawing.Color.SeaGreen;
             this.txtIntro.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtIntro.ForeColor = System.Drawing.Color.Gray;
-            this.txtIntro.Location = new System.Drawing.Point(33, 250);
+            this.txtIntro.Location = new System.Drawing.Point(33, 278);
             this.txtIntro.Multiline = true;
             this.txtIntro.Name = "txtIntro";
-            this.txtIntro.Size = new System.Drawing.Size(313, 99);
+            this.txtIntro.Size = new System.Drawing.Size(313, 71);
             this.txtIntro.TabIndex = 13;
             this.txtIntro.Text = "Introduce Yourself";
             this.txtIntro.Enter += new System.EventHandler(this.TxtIntro_Enter);
             this.txtIntro.Leave += new System.EventHandler(this.TxtIntro_Leave);
+            // 
+            // txtMail
+            // 
+            this.txtMail.BorderColorFocused = System.Drawing.Color.OrangeRed;
+            this.txtMail.BorderColorIdle = System.Drawing.Color.Black;
+            this.txtMail.BorderColorMouseHover = System.Drawing.Color.OrangeRed;
+            this.txtMail.BorderThickness = 3;
+            this.txtMail.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.txtMail.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
+            this.txtMail.ForeColor = System.Drawing.Color.Gray;
+            this.txtMail.isPassword = false;
+            this.txtMail.Location = new System.Drawing.Point(33, 227);
+            this.txtMail.Margin = new System.Windows.Forms.Padding(4);
+            this.txtMail.Name = "txtMail";
+            this.txtMail.Size = new System.Drawing.Size(313, 44);
+            this.txtMail.TabIndex = 14;
+            this.txtMail.Text = "Your G-Mail";
+            this.txtMail.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.txtMail.Enter += new System.EventHandler(this.TxtMail_Enter);
+            this.txtMail.Leave += new System.EventHandler(this.TxtMail_Leave);
             // 
             // Regcollaboratortab
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
+            this.Controls.Add(this.txtMail);
             this.Controls.Add(this.txtIntro);
             this.Controls.Add(this.regCollab);
             this.Controls.Add(this.collabAddress);
@@ -337,5 +359,6 @@
         private Bunifu.Framework.UI.BunifuMetroTextbox collabAddress;
         private Bunifu.Framework.UI.BunifuFlatButton regCollab;
         private WindowsFormsControlLibrary1.BunifuCustomTextbox txtIntro;
+        private Bunifu.Framework.UI.BunifuMetroTextbox txtMail;
     }
 }

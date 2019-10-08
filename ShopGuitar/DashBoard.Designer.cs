@@ -35,13 +35,14 @@
             this.bunifuImageButton2 = new Bunifu.Framework.UI.BunifuImageButton();
             this.bunifuImageButton1 = new Bunifu.Framework.UI.BunifuImageButton();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.btnchangePwd = new System.Windows.Forms.Button();
             this.SeedingUser = new System.Windows.Forms.TextBox();
-            this.bunifuTileButton9 = new Bunifu.Framework.UI.BunifuTileButton();
-            this.bunifuTileButton8 = new Bunifu.Framework.UI.BunifuTileButton();
+            this.btnAnaly = new Bunifu.Framework.UI.BunifuTileButton();
+            this.btnPOS = new Bunifu.Framework.UI.BunifuTileButton();
             this.btnStore = new Bunifu.Framework.UI.BunifuTileButton();
             this.bunifuTileButton6 = new Bunifu.Framework.UI.BunifuTileButton();
             this.btnStock = new Bunifu.Framework.UI.BunifuTileButton();
-            this.bunifuTileButton4 = new Bunifu.Framework.UI.BunifuTileButton();
+            this.collabRq = new Bunifu.Framework.UI.BunifuTileButton();
             this.btnMcustomers = new Bunifu.Framework.UI.BunifuTileButton();
             this.btnMuser = new Bunifu.Framework.UI.BunifuTileButton();
             this.btnHome = new Bunifu.Framework.UI.BunifuTileButton();
@@ -57,13 +58,18 @@
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.panel5 = new System.Windows.Forms.Panel();
             this.bunifuDragControl1 = new Bunifu.Framework.UI.BunifuDragControl(this.components);
+            this.querylevel = new System.Windows.Forms.TextBox();
+            this.pos1 = new ShopGuitar.POS();
+            this.analyticstab1 = new ShopGuitar.Analyticstab();
+            this.collabrequesttab1 = new ShopGuitar.Collabrequesttab();
+            this.historybuytab1 = new ShopGuitar.Historybuytab();
             this.changepwdtab1 = new ShopGuitar.Changepwdtab();
             this.buyproducts1 = new ShopGuitar.Buyproducts();
             this.mproducts1 = new ShopGuitar.Mproducts();
             this.mcustomers1 = new ShopGuitar.Mcustomers();
             this.muser1 = new ShopGuitar.Muser();
             this.dashboardHome1 = new ShopGuitar.DashboardHome();
-            this.btnchangePwd = new System.Windows.Forms.Button();
+            this.gotoStoreNow = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bunifuImageButton3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bunifuImageButton2)).BeginInit();
@@ -89,6 +95,9 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1280, 43);
             this.panel1.TabIndex = 1;
+            this.panel1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Panel1_MouseDown);
+            this.panel1.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Panel1_MouseMove);
+            this.panel1.MouseUp += new System.Windows.Forms.MouseEventHandler(this.Panel1_MouseUp);
             // 
             // bunifuImageButton3
             // 
@@ -134,14 +143,16 @@
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.Black;
+            this.panel2.Controls.Add(this.gotoStoreNow);
+            this.panel2.Controls.Add(this.querylevel);
             this.panel2.Controls.Add(this.btnchangePwd);
             this.panel2.Controls.Add(this.SeedingUser);
-            this.panel2.Controls.Add(this.bunifuTileButton9);
-            this.panel2.Controls.Add(this.bunifuTileButton8);
+            this.panel2.Controls.Add(this.btnAnaly);
+            this.panel2.Controls.Add(this.btnPOS);
             this.panel2.Controls.Add(this.btnStore);
             this.panel2.Controls.Add(this.bunifuTileButton6);
             this.panel2.Controls.Add(this.btnStock);
-            this.panel2.Controls.Add(this.bunifuTileButton4);
+            this.panel2.Controls.Add(this.collabRq);
             this.panel2.Controls.Add(this.btnMcustomers);
             this.panel2.Controls.Add(this.btnMuser);
             this.panel2.Controls.Add(this.btnHome);
@@ -152,6 +163,16 @@
             this.panel2.Size = new System.Drawing.Size(1280, 120);
             this.panel2.TabIndex = 2;
             // 
+            // btnchangePwd
+            // 
+            this.btnchangePwd.Location = new System.Drawing.Point(1217, 34);
+            this.btnchangePwd.Name = "btnchangePwd";
+            this.btnchangePwd.Size = new System.Drawing.Size(28, 23);
+            this.btnchangePwd.TabIndex = 20;
+            this.btnchangePwd.Text = "ChangePwd";
+            this.btnchangePwd.UseVisualStyleBackColor = true;
+            this.btnchangePwd.Click += new System.EventHandler(this.BtnchangePwd_Click);
+            // 
             // SeedingUser
             // 
             this.SeedingUser.Location = new System.Drawing.Point(1235, 6);
@@ -160,43 +181,45 @@
             this.SeedingUser.TabIndex = 0;
             this.SeedingUser.TextChanged += new System.EventHandler(this.SeedingUser_TextChanged);
             // 
-            // bunifuTileButton9
+            // btnAnaly
             // 
-            this.bunifuTileButton9.BackColor = System.Drawing.Color.Transparent;
-            this.bunifuTileButton9.color = System.Drawing.Color.Transparent;
-            this.bunifuTileButton9.colorActive = System.Drawing.Color.Aquamarine;
-            this.bunifuTileButton9.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.bunifuTileButton9.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F);
-            this.bunifuTileButton9.ForeColor = System.Drawing.Color.White;
-            this.bunifuTileButton9.Image = ((System.Drawing.Image)(resources.GetObject("bunifuTileButton9.Image")));
-            this.bunifuTileButton9.ImagePosition = 0;
-            this.bunifuTileButton9.ImageZoom = 80;
-            this.bunifuTileButton9.LabelPosition = 26;
-            this.bunifuTileButton9.LabelText = "Analytics";
-            this.bunifuTileButton9.Location = new System.Drawing.Point(1085, 6);
-            this.bunifuTileButton9.Margin = new System.Windows.Forms.Padding(6);
-            this.bunifuTileButton9.Name = "bunifuTileButton9";
-            this.bunifuTileButton9.Size = new System.Drawing.Size(101, 96);
-            this.bunifuTileButton9.TabIndex = 19;
+            this.btnAnaly.BackColor = System.Drawing.Color.Transparent;
+            this.btnAnaly.color = System.Drawing.Color.Transparent;
+            this.btnAnaly.colorActive = System.Drawing.Color.Aquamarine;
+            this.btnAnaly.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnAnaly.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F);
+            this.btnAnaly.ForeColor = System.Drawing.Color.White;
+            this.btnAnaly.Image = ((System.Drawing.Image)(resources.GetObject("btnAnaly.Image")));
+            this.btnAnaly.ImagePosition = 0;
+            this.btnAnaly.ImageZoom = 80;
+            this.btnAnaly.LabelPosition = 26;
+            this.btnAnaly.LabelText = "Analytics";
+            this.btnAnaly.Location = new System.Drawing.Point(1085, 6);
+            this.btnAnaly.Margin = new System.Windows.Forms.Padding(6);
+            this.btnAnaly.Name = "btnAnaly";
+            this.btnAnaly.Size = new System.Drawing.Size(101, 96);
+            this.btnAnaly.TabIndex = 19;
+            this.btnAnaly.Click += new System.EventHandler(this.BtnAnaly_Click);
             // 
-            // bunifuTileButton8
+            // btnPOS
             // 
-            this.bunifuTileButton8.BackColor = System.Drawing.Color.Transparent;
-            this.bunifuTileButton8.color = System.Drawing.Color.Transparent;
-            this.bunifuTileButton8.colorActive = System.Drawing.Color.Aquamarine;
-            this.bunifuTileButton8.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.bunifuTileButton8.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F);
-            this.bunifuTileButton8.ForeColor = System.Drawing.Color.White;
-            this.bunifuTileButton8.Image = ((System.Drawing.Image)(resources.GetObject("bunifuTileButton8.Image")));
-            this.bunifuTileButton8.ImagePosition = 0;
-            this.bunifuTileButton8.ImageZoom = 80;
-            this.bunifuTileButton8.LabelPosition = 26;
-            this.bunifuTileButton8.LabelText = "POS";
-            this.bunifuTileButton8.Location = new System.Drawing.Point(969, 6);
-            this.bunifuTileButton8.Margin = new System.Windows.Forms.Padding(6);
-            this.bunifuTileButton8.Name = "bunifuTileButton8";
-            this.bunifuTileButton8.Size = new System.Drawing.Size(101, 96);
-            this.bunifuTileButton8.TabIndex = 18;
+            this.btnPOS.BackColor = System.Drawing.Color.Transparent;
+            this.btnPOS.color = System.Drawing.Color.Transparent;
+            this.btnPOS.colorActive = System.Drawing.Color.Aquamarine;
+            this.btnPOS.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnPOS.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F);
+            this.btnPOS.ForeColor = System.Drawing.Color.White;
+            this.btnPOS.Image = ((System.Drawing.Image)(resources.GetObject("btnPOS.Image")));
+            this.btnPOS.ImagePosition = 0;
+            this.btnPOS.ImageZoom = 80;
+            this.btnPOS.LabelPosition = 26;
+            this.btnPOS.LabelText = "POS";
+            this.btnPOS.Location = new System.Drawing.Point(969, 6);
+            this.btnPOS.Margin = new System.Windows.Forms.Padding(6);
+            this.btnPOS.Name = "btnPOS";
+            this.btnPOS.Size = new System.Drawing.Size(101, 96);
+            this.btnPOS.TabIndex = 18;
+            this.btnPOS.Click += new System.EventHandler(this.BtnPOS_Click);
             // 
             // btnStore
             // 
@@ -236,6 +259,7 @@
             this.bunifuTileButton6.Name = "bunifuTileButton6";
             this.bunifuTileButton6.Size = new System.Drawing.Size(101, 96);
             this.bunifuTileButton6.TabIndex = 16;
+            this.bunifuTileButton6.Click += new System.EventHandler(this.BunifuTileButton6_Click);
             // 
             // btnStock
             // 
@@ -257,24 +281,25 @@
             this.btnStock.TabIndex = 15;
             this.btnStock.Click += new System.EventHandler(this.BunifuTileButton5_Click);
             // 
-            // bunifuTileButton4
+            // collabRq
             // 
-            this.bunifuTileButton4.BackColor = System.Drawing.Color.Transparent;
-            this.bunifuTileButton4.color = System.Drawing.Color.Transparent;
-            this.bunifuTileButton4.colorActive = System.Drawing.Color.Aquamarine;
-            this.bunifuTileButton4.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.bunifuTileButton4.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F);
-            this.bunifuTileButton4.ForeColor = System.Drawing.Color.White;
-            this.bunifuTileButton4.Image = ((System.Drawing.Image)(resources.GetObject("bunifuTileButton4.Image")));
-            this.bunifuTileButton4.ImagePosition = 0;
-            this.bunifuTileButton4.ImageZoom = 80;
-            this.bunifuTileButton4.LabelPosition = 26;
-            this.bunifuTileButton4.LabelText = "Collab";
-            this.bunifuTileButton4.Location = new System.Drawing.Point(505, 6);
-            this.bunifuTileButton4.Margin = new System.Windows.Forms.Padding(6);
-            this.bunifuTileButton4.Name = "bunifuTileButton4";
-            this.bunifuTileButton4.Size = new System.Drawing.Size(101, 96);
-            this.bunifuTileButton4.TabIndex = 14;
+            this.collabRq.BackColor = System.Drawing.Color.Transparent;
+            this.collabRq.color = System.Drawing.Color.Transparent;
+            this.collabRq.colorActive = System.Drawing.Color.Aquamarine;
+            this.collabRq.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.collabRq.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F);
+            this.collabRq.ForeColor = System.Drawing.Color.White;
+            this.collabRq.Image = ((System.Drawing.Image)(resources.GetObject("collabRq.Image")));
+            this.collabRq.ImagePosition = 0;
+            this.collabRq.ImageZoom = 80;
+            this.collabRq.LabelPosition = 26;
+            this.collabRq.LabelText = "Collab";
+            this.collabRq.Location = new System.Drawing.Point(505, 6);
+            this.collabRq.Margin = new System.Windows.Forms.Padding(6);
+            this.collabRq.Name = "collabRq";
+            this.collabRq.Size = new System.Drawing.Size(101, 96);
+            this.collabRq.TabIndex = 14;
+            this.collabRq.Click += new System.EventHandler(this.CollabRq_Click);
             // 
             // btnMcustomers
             // 
@@ -338,7 +363,7 @@
             // 
             // sslider
             // 
-            this.sslider.BackColor = System.Drawing.Color.Aquamarine;
+            this.sslider.BackColor = System.Drawing.Color.DeepPink;
             this.sslider.Location = new System.Drawing.Point(157, 103);
             this.sslider.Name = "sslider";
             this.sslider.Size = new System.Drawing.Size(101, 13);
@@ -451,6 +476,10 @@
             // panel5
             // 
             this.panel5.BackColor = System.Drawing.Color.White;
+            this.panel5.Controls.Add(this.pos1);
+            this.panel5.Controls.Add(this.analyticstab1);
+            this.panel5.Controls.Add(this.collabrequesttab1);
+            this.panel5.Controls.Add(this.historybuytab1);
             this.panel5.Controls.Add(this.changepwdtab1);
             this.panel5.Controls.Add(this.buyproducts1);
             this.panel5.Controls.Add(this.mproducts1);
@@ -470,6 +499,45 @@
             this.bunifuDragControl1.Horizontal = true;
             this.bunifuDragControl1.TargetControl = null;
             this.bunifuDragControl1.Vertical = true;
+            // 
+            // querylevel
+            // 
+            this.querylevel.Location = new System.Drawing.Point(1244, 63);
+            this.querylevel.Name = "querylevel";
+            this.querylevel.Size = new System.Drawing.Size(24, 22);
+            this.querylevel.TabIndex = 21;
+            // 
+            // pos1
+            // 
+            this.pos1.BackColor = System.Drawing.Color.White;
+            this.pos1.Location = new System.Drawing.Point(0, 0);
+            this.pos1.Name = "pos1";
+            this.pos1.Size = new System.Drawing.Size(1280, 566);
+            this.pos1.TabIndex = 9;
+            // 
+            // analyticstab1
+            // 
+            this.analyticstab1.BackColor = System.Drawing.Color.White;
+            this.analyticstab1.Location = new System.Drawing.Point(0, 0);
+            this.analyticstab1.Name = "analyticstab1";
+            this.analyticstab1.Size = new System.Drawing.Size(1280, 566);
+            this.analyticstab1.TabIndex = 8;
+            // 
+            // collabrequesttab1
+            // 
+            this.collabrequesttab1.BackColor = System.Drawing.Color.White;
+            this.collabrequesttab1.Location = new System.Drawing.Point(0, 0);
+            this.collabrequesttab1.Name = "collabrequesttab1";
+            this.collabrequesttab1.Size = new System.Drawing.Size(1280, 566);
+            this.collabrequesttab1.TabIndex = 7;
+            // 
+            // historybuytab1
+            // 
+            this.historybuytab1.BackColor = System.Drawing.Color.White;
+            this.historybuytab1.Location = new System.Drawing.Point(0, 0);
+            this.historybuytab1.Name = "historybuytab1";
+            this.historybuytab1.Size = new System.Drawing.Size(1280, 566);
+            this.historybuytab1.TabIndex = 6;
             // 
             // changepwdtab1
             // 
@@ -517,15 +585,15 @@
             this.dashboardHome1.Size = new System.Drawing.Size(1280, 566);
             this.dashboardHome1.TabIndex = 0;
             // 
-            // btnchangePwd
+            // gotoStoreNow
             // 
-            this.btnchangePwd.Location = new System.Drawing.Point(1217, 34);
-            this.btnchangePwd.Name = "btnchangePwd";
-            this.btnchangePwd.Size = new System.Drawing.Size(28, 23);
-            this.btnchangePwd.TabIndex = 20;
-            this.btnchangePwd.Text = "ChangePwd";
-            this.btnchangePwd.UseVisualStyleBackColor = true;
-            this.btnchangePwd.Click += new System.EventHandler(this.BtnchangePwd_Click);
+            this.gotoStoreNow.Location = new System.Drawing.Point(1217, 91);
+            this.gotoStoreNow.Name = "gotoStoreNow";
+            this.gotoStoreNow.Size = new System.Drawing.Size(28, 23);
+            this.gotoStoreNow.TabIndex = 22;
+            this.gotoStoreNow.Text = "ChangePwd";
+            this.gotoStoreNow.UseVisualStyleBackColor = true;
+            this.gotoStoreNow.Click += new System.EventHandler(this.GotoStoreNow_Click);
             // 
             // DashBoard
             // 
@@ -577,12 +645,12 @@
         private System.Windows.Forms.Panel sslider;
         private System.Windows.Forms.Panel panel5;
         private Bunifu.Framework.UI.BunifuDragControl bunifuDragControl1;
-        private Bunifu.Framework.UI.BunifuTileButton bunifuTileButton9;
-        private Bunifu.Framework.UI.BunifuTileButton bunifuTileButton8;
+        private Bunifu.Framework.UI.BunifuTileButton btnAnaly;
+        private Bunifu.Framework.UI.BunifuTileButton btnPOS;
         private Bunifu.Framework.UI.BunifuTileButton btnStore;
         private Bunifu.Framework.UI.BunifuTileButton bunifuTileButton6;
         private Bunifu.Framework.UI.BunifuTileButton btnStock;
-        private Bunifu.Framework.UI.BunifuTileButton bunifuTileButton4;
+        private Bunifu.Framework.UI.BunifuTileButton collabRq;
         private Bunifu.Framework.UI.BunifuTileButton btnMcustomers;
         private Bunifu.Framework.UI.BunifuTileButton btnMuser;
         private System.Windows.Forms.TextBox SeedingUser;
@@ -594,5 +662,11 @@
         private Buyproducts buyproducts1;
         private Changepwdtab changepwdtab1;
         private System.Windows.Forms.Button btnchangePwd;
+        private Historybuytab historybuytab1;
+        private Collabrequesttab collabrequesttab1;
+        private Analyticstab analyticstab1;
+        private POS pos1;
+        private System.Windows.Forms.TextBox querylevel;
+        private System.Windows.Forms.Button gotoStoreNow;
     }
 }
